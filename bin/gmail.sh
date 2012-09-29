@@ -1,7 +1,7 @@
 #!/bin/bash
 
-gmail_login="Zuckerwooo" 
-gmail_password="yang3136299"
+gmail_login="" 
+gmail_password=""
 
 dane="$(wget --secure-protocol=TLSv1 --timeout=3 -t 1 -q -O - \
 https://${gmail_login}:${gmail_password}@mail.google.com/mail/feed/atom \
