@@ -1,0 +1,6 @@
+${voffset -20}${alignr 70}${color gold}${font ConkyWeather:style=Bold:size=40}[--datatype=WF]${font}${color}
+${voffset -50}${goto 10}${color4}${font Weather:size=45}y${font}${color4}${voffset -48}${goto 30}${color4}${font Zekton :bold:size=23}[--datatype=HT]${font}${color}${voffset 13}${goto 30}${color6}${font Zekton :bold:size=10}[--datatype=CC]${color}${font}
+${voffset 0}${goto 30}${font Zekton :bold:size=10}[--datatype=DW --startday=1 --shortweekday] ${goto 85}[--datatype=DW --startday=2 --shortweekday] ${goto 135}[--datatype=DW --startday=3 --shortweekday] ${goto 195}[--datatype=DW --startday=4 --shortweekday]${font}
+${voffset 0}${goto 30}${color4}${font ConkyWeather:size=28}[--datatype=WF --startday=1 --endday=4 --spaces=2]${font}${color}
+${voffset -5}${goto 30}${font Zekton :bold:size=8}[--datatype=HT --startday=1 --hideunits --centeredwidth=3]/[--datatype=LT --startday=1 --hideunits --centeredwidth=3] ${goto 90}[--datatype=HT --startday=2 --hideunits --centeredwidth=3]/[--datatype=LT --startday=2 --hideunits --centeredwidth=3] ${goto 140}[--datatype=HT --startday=3 --hideunits --centeredwidth=3]/[--datatype=LT --startday=3 --hideunits --centeredwidth=3] ${goto 195}[--datatype=HT --startday=4 --hideunits --centeredwidth=3]/[--datatype=LT --startday=4 --hideunits --centeredwidth=3]${font}
+

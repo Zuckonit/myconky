@@ -1,0 +1,3 @@
+#! /bin/sh
+cd ~/.myconky/scripts
+$PYTHONPATH /usr/bin/python ~/.myconky/scripts/conkyForecast.py "$@"

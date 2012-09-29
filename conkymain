@@ -1,0 +1,150 @@
+######################
+# - Conky settings - #
+######################
+update_interval 1
+total_run_times 0
+net_avg_samples 2
+cpu_avg_samples 2
+
+imlib_cache_size 0
+double_buffer yes
+no_buffers yes
+
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont Zekton:size=8
+override_utf8_locale yes
+text_buffer_size 2048
+
+#############################
+# - Window specifications - #
+#############################
+
+#alignment top_right
+alignment top_left
+
+
+own_window_class Conky
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+
+
+gap_x 20
+gap_y 20
+minimum_size 182 0
+maximum_width 240
+
+own_window_title conkymain
+
+default_bar_size 60 8
+
+default_color FFDEAD #NavajoWhite
+color0 7FFFD4 #Aquamarine
+color1 CD5C5C #IndianRed #00CED1 DarkTurquoise #FFA07A LightSalmon #00FFFF Cyan
+color2 FF8C00 #Darkorange #D2691E #Chocolate
+color3 7FFF00 #Chartreuse
+color4 white  #gold
+color5 FFDEAD #NavajoWhite
+color6 00BFFF #DeepSkyBlue
+#colours below used by colorize script
+color7 48D1CC #MediumTurquoise
+color8 FFFF00 #Yellow
+color9 FF0000 #Red
+
+TEXT
+${goto 10}${color2}${font Zekton :bold:size=18}${alignc}${nodename}${font}${color}
+${color6}${cpubar cpu4 1,258}${color}
+${voffset -15}${color white}${font Poky:bold:size=30}S${font}
+${voffset -40}${goto 55}${color2}${font Zekton :bold:size=10}Kernel:${font}${color}${voffset -4}${alignr 10}${font Zekton :bold:size=10}${kernel}
+${goto 55}${color2}${font Zekton :Bold:size=10}Uptime:${font}${color}${alignr 30}${color8}${font LCDMono2 :bold :size=12}$uptime_short${color}
+################################
+# |--CPU
+${voffset -13}${goto 5}${color white}${font Poky:size=33}P${font}${voffset -25}${goto 55}${color2}${font Zekton :bold:size=10}CPU1:${font}${color}${voffset -3}${goto 100}${font DejaVu Sans Mono:bold:size=11}${color5}${cpu cpu1}%${font}${voffset -2}${goto 140}${font DejaVu Sans Mono:bold:size=11}${color6}${execi 30 sensors | grep 'Core 0' | cut -c15-16}¡æ${color}${font}${alignr 5}${color5}${cpugraph cpu1 10,70 FFF6CD FF0B00}${color}
+${voffset 3}${goto 55}${color2}${font Zekton :bold:size=10}CPU2:${goto 100}${font DejaVu Sans Mono:bold:size=11}${color5}${cpu cpu2}%${font} ${voffset -3}${goto 140}${font DejaVu Sans Mono:bold:size=11}${color6}${execi 30 sensors | grep 'Core 1' | cut -c15-16}¡æ${color}${font}${alignr 5}${color5}${cpugraph cpu2 10,70 FFF6CD FF0B00}${color}
+#${voffset 3}${goto 55}${color2}${font Zekton :bold:size=10}CPUFan: ${voffset 0}${goto 140}${font DejaVu Sans Mono:bold:size=11}${color6}${execi 30 sensors | grep 'fan1' | cut -c13-16}Rpm/M${color}${font}
+# |--MEM
+${voffset -5}${color white}${font Poky:size=30}M${font}${goto 55}${voffset -26}${color2}${font Zekton :bold:size=10}RAM:${goto 100}${font DejaVu Sans Mono:bold:size=11}${color5}$memperc%${color}${font}${alignr 5}${color5}${memgraph 10,70 0FFF6CD FF0B00}
+${voffset -2}${goto 55}${color2}${font Zekton :bold:size=10}Free:${goto 95}${font DejaVu Sans Mono:bold:size=11}${color5}${memeasyfree}${color} ${voffset -2}${color2}${font Zekton :bold:size=10}${goto 160}Use: ${font DejaVu Sans Mono:bold:size=11}${color5}${mem}${color}
+#|--Disk
+${voffset -10}${color white}${font Poky:size=30}y${voffset -20}${goto 55}${color2}${font Zekton :bold:size=10}SDA:${goto 95}${font DejaVu Sans Mono:bold:size=11}${color6}${execi 120 hddtemp /dev/sda -n --unit=C}¡æ${color}${font}${voffset -5}${goto 140}${color2}${font Zekton :bold:size=10}${goto 160}SWAP: ${font DejaVu Sans Mono:bold:size=11}${color1} ${swapperc}%${color}${font}
+${goto 55}${color2}${font Zekton :bold:size=10}Home:${font DejaVu Sans Mono:bold:size=11}${alignr}${color6}${fs_free /home}${color}${color2}/${color}${fs_size /home}
+${voffset -5}${color6}${cpubar cpu4 1,258}${color}
+#--|Progess
+${voffset -10}${goto 10}${color2}${font Zekton :bold:size=10}Processes ${color2}${alignr 60}CPU${alignr 10}RAM${color}
+${voffset -1}${goto 10}${font DejaVu Sans Mono:bold:size=11}${color3}${top name 1}${color} ${goto 100}${font DejaVu Sans Mono:bold:size=11}${color3}${top cpu 1}${alignr }${font DejaVu Sans Mono:bold:size=11}${color3}${top mem_res 1}${color}${font}
+${voffset -1}${goto 10}${font DejaVu Sans Mono:bold:size=11}${color5}${top name 2}${color} ${goto 100}${font DejaVu Sans Mono:bold:size=11}${color6}${top cpu 2}${alignr }${font DejaVu Sans Mono:bold:size=11}${color5}${top mem_res 2}${color}${font}
+${voffset -1}${goto 10}${font DejaVu Sans Mono:bold:size=11}${color5}${top name 3}${color} ${goto 100}${font DejaVu Sans Mono:bold:size=11}${color6}${top cpu 3}${alignr }${font DejaVu Sans Mono:bold:size=11}${color5}${top mem_res 3}${color}${font}
+${voffset -4}${color6}${cpubar cpu4 1,258}${color}
+#############
+# - CLOCK - #
+#############
+${voffset -4}${font LCDMono:size=50}${time %R}${font LCDMono:size=10}:${time %S}${font}
+${voffset -70}${color8}${font Zekton:size=28}${alignr 5}${time %b}${font}
+${font Zekton:size=15}${alignr 0}${time %d}${font}
+${voffset -4}${color6}${cpubar cpu4 1,258}
+#############
+# - PHOTO - #
+#############
+# For a working photo widget you need to specify a file or directory in conkyPhoto or conkyPhotoRandom script in ~/.myconky/bin/ folder
+${execi 300 ~/.myconky/bin/conkyPhotoRandom}${image /tmp/conkyPhoto.png -s 240x170 -p 4,338}
+${voffset 136}${color6}${cpubar cpu4 1,258}${color}
+###############
+# - WEATHER - #
+###############
+# For a working weather script you NEED to define, in a user specific config file, a partner id and registration code for the weather.com xoap service. For this purpose copy .conkyForecast.config in ~/.conkycolors folder to your home and setup as required.
+# http://www.weather.com/services/xmloap.html
+#${voffset 4}${font Liberation Sans:style=Bold:size=8}WEATHER $stippled_hr${font}
+# |--WLAN0
+${if_existing /proc/net/route wlan0}
+${execpi 10800 ~/.myconky/scripts/conkyForecast.py --location=CHXX0351 -t ~/.myconky/templates/conkyForecast.template}
+# |--ETH0
+${else}${if_existing /proc/net/route eth0}
+${execpi 10800 ~/.myconky/scripts/conkyForecast.py --location=CHXX0351 -t ~/.myconky/templates/conkyForecast.template}
+# |--PPP0
+${else}${if_existing /proc/net/route ppp0}
+${execpi 10800 ~/.myconky/scripts/conkyForecast.py --location=CHXX0351 -t ~/.myconky/templates/conkyForecast.template}
+${else}${voffset 0}${color8}${font PizzaDude Bullets:size=50}4${font}${color}${voffset -20}${alignr 50}${font Zekton :bold:size=10}${color9}Weather Unavailable${endif}${endif}${endif}
+###############
+# - NETWORK - #
+###############
+#${voffset -30}${color2}${font Zekton :bold:size=18}NetWork: ${font}
+# |--WLAN0
+${if_existing /proc/net/route wlan0}
+${voffset -65}${color6}${cpubar cpu4 1,258}${color}
+${voffset -20}${color white}${font VariShapes Solid:size=30}q${font}${color}${goto 45}${voffset -23}${color2}${font Zekton :bold:size=9}Up:     ${color3}${upspeed wlan0}${color}${font}${voffset -15}${goto 130}${color white}${font VariShapes Solid:size=30}Q ${font}${color}${voffset -24}${goto 175}${color2}${font Zekton :bold:size=9}Down: ${color3}${downspeed wlan0}${color}${font}
+${voffset 5}${goto 45}${font Zekton :bold:size=9}Total: ${color6}${totalup wlan0}${color}${goto 175}Total:   ${color6}${totaldown wlan0}${color}
+${voffset 4}${color white}${font Poky:size=30}w${font}${color}${goto 32}${voffset -30}${goto 50}${font Zekton :bold:size=9}Local IP: ${alignr}${color2}${addr wlan0}${color}
+${voffset 5}${goto 50}Public IP: ${alignr}${color2}${execi 10800 ~/.myconky/bin/conkyIp}${color}
+${voffset -5}${color white}${font Poky:size=30}Y${font}${color}${goto 45} ${voffset -10}${font Zekton :bold:size=9}Signal:${color1}${goto 100}${font DejaVu Sans Mono:bold:size=11}${wireless_link_qual wlan0}%${color}${font} ${alignr}${color5}${goto 192}${wireless_link_bar 10,70 wlan0}${color}
+# |--ETH0
+${else}${if_existing /proc/net/route eth0}
+${voffset -65}${color6}${cpubar cpu4 1,258}${color}
+${voffset -20}${color white}${font VariShapes Solid:size=30}q${font}${color}${goto 45}${voffset -23}${color2}${font Zekton :bold:size=9}Up:      ${color3}${upspeed eth0}${color}${font}${voffset -15}${goto 130}${color white}${font VariShapes Solid:size=30}Q${font}${color}${voffset -24}${goto 175}${color2}${font Zekton :bold:size=9}Down: ${color3}${downspeed eth0}${color}${font}
+${voffset 5}${goto 45}${font Zekton :bold:size=9}Total: ${color6}${totalup eth0}${color}${goto 175}Total: ${color6}${totaldown eth0}${color}
+${voffset 4}${color white}${font Poky:size=30}w${font}${color}${goto 32}${voffset -30}${goto 50}${font Zekton :bold:size=9}Local IP: ${alignr}${color2}${addr eth0}${color}
+${voffset 5}${goto 50}Public IP: ${alignr}${color2}${execi 10800 ~/.myconky/bin/conkyIp}${color}
+# |--PPP0
+${else}${if_existing /proc/net/route ppp0}
+${voffset -65}${color6}${cpubar cpu4 1,258}${color}
+${voffset -20}${color white}${font VariShapes Solid:size=30}q${font}${color}${goto 45}${voffset -23}${color2}${font Zekton :bold:size=9}Up:      ${color3}${upspeed ppp0}${color}${font}${voffset -15}${goto 130}${color white}${font VariShapes Solid:size=30}Q${font}${color}${voffset -24}${goto 175}${color2}${font Zekton :bold:size=9}Down: ${color3}${downspeed ppp0}${color}${font}
+${voffset 5}${goto 45}${font Zekton :bold:size=9}Total: ${color6}${totalup ppp0}${color}${goto 175}Total: ${color6}${totaldown ppp0}${color}
+${voffset 4}${color white}${font Poky:size=30}w${font}${color}${goto 32}${voffset -30}${goto 50}${font Zekton :bold:size=9}Local IP: ${alignr}${color2}${addr ppp0}${color}
+${else}${voffset 30}${color6}${cpubar cpu4 1,258}${color}
+${voffset 0}${color8}${font PizzaDude Bullets:size=50}4${font}${color}${voffset -20}${alignr 50}${font Zekton :bold:size=10}${color9}Network Unavailable${endif}${endif}${endif}
+#moc player
+${color6}${cpubar cpu4 1,258}
+$color${voffset -15}${font VariShapes Solid:size=30}|$font${voffset -25}${font wenquanyi bitmap song:size=11}${moc_song} - ${moc_artist}$font
+$color${offset 50}${font wenquanyi bitmap song:size=10}${moc_timeleft}$font
+#qq online
+${execi 600 ~/.myconky/bin/qqonline.sh xxxx} #here xxxx is a qq
+${if_existing /tmp/qqonline}${voffset 5}${font PizzaDude Bullets:size=30}2${font}${voffset -15}${goto 10}${color2}${font Zekton :bold:size=18}${alignc}She's ONLINE${font}${color}
+${else}${if_existing /tmp/qqoffline}${voffset 5}${font PizzaDude Bullets:size=30}4${font}${voffset -15}${color2}${font Zekton :bold:size=18}${alignr}She's OFFLINE${font}${color}
+${endif}${endif}
+${voffset 5}${font PizzaDude Bullets:size=30}0${font}${voffset -15}${color2}${font Zekton :bold:size=18}${offset 20}${execi 1800 ~/.myconky/bin/gmail.sh}${font}${color}emails
+${color6}${cpubar cpu4 1,258}
+${font wenquanyi bitmap song}${rss http://feed.feedsky.com/my_cnbeta 5 item_titles 5}$font
